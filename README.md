@@ -23,6 +23,31 @@
 - exit -> salimos del contenedor.
 - exec -it 'nombre-container' 'comando -> ej exct -it contenedor bash, con esto entraríamos al bash del container.
 - kill 'name-container' -> desde fuera del contenedor, podemos matar un contenedor
+- --mount src=volu,des=/data/ -> Sirve para montar un volumen a un contenedor
+
+
+### Docker volumes
+
+- volume -> Comando principal
+  - ls ->  Muestra los volumenes de Docker
+  - prune -> Borra, limpia, los contenedores que no están en uso por ningún contenedor
+  - create 'nombre' -> crea volumen 
+
+
+
+### Imágenes
+
+Una imagen está contenida de layers o capas que se van montando. 
+
+Esto funciona como git, cada capa es una modificación sobre la anterior
+
+- Docker pull 'nombreImagen' -> Se descarga una imagen
+
+- Image -> comando principal
+  - ls -> lista las imágenes
+
+
+
 
 Cuando ejecutamos un comando en la creación de un contenedor, le establece el PID 1, si ese PID se finalizase, el contenedor se pararía
 
@@ -30,3 +55,4 @@ Cuando ejecutamos un comando en la creación de un contenedor, le establece el P
 cat /etc/lsb-release  -> ver versión linux
 
 uname -a -> obtenemos el nombre de la máquina
+
