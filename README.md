@@ -45,9 +45,29 @@ Esto funciona como git, cada capa es una modificación sobre la anterior
 
 - Image -> comando principal
   - ls -> lista las imágenes
+- tag ubuntu:alex alex/ubuntu:alex -> creamso un tag nuevo para una imagen
+- history 'imagen' -> Muestra las capas de una imagen. EJ: docker history ubuntu:alex
+- --no-trunc -> no rompe la secuencia anterior. EJ: docker history --no-trunc ubuntu:alex
 
 
+### DockerFile
 
+Es la receta que utiliza docker
+
+- build -> contruir una imagen a partir de Dockerfile
+  - -t -> damos nombre a la imagen
+  - . -> Establece el path donde va a trabajar docker
+  - EJ: docker build -t ubuntu:alex .
+
+### Repositorio Docker
+
+- docker push alzort/ubuntu:alex -> pusheamos la imageb ak repo
+
+### Dive
+
+Con brew install dive, podemos ver el conteido de cada layout de las imágenes. Con tab pasar a los ficheros y con crt + u, ver los modificados
+
+- dive ubuntu:alex
 
 Cuando ejecutamos un comando en la creación de un contenedor, le establece el PID 1, si ese PID se finalizase, el contenedor se pararía
 
