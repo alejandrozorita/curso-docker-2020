@@ -17,8 +17,9 @@
   - d -> nos devuelve el control del terminal, no nos mustra los outputs y mantiene activo el container. EJ: docker run -d --name server-ng nginx
   - p -> expone un puerto del contenedor a la máquina. EJ : docker run -d --name server-ngx -p 8080:80 nginx
   - v -> indicamos donde queremos generar un volumen para persistir los datos. ## EJ: docker run --name db -d -v /Users/alejandro/Dev/Platzi/Servidores/Docker/fundamentos-docker-2018/mongodata:/data/db mongo 
+  - --env KEY=value -> Establece una valor para el env. EJ: docker run -d --env KEY=vlaue
 - rm 'id' -> borra el contenedor dado
-  - -rm $(docker ps -aq) -> combinamos comandos, retornamos un listado de IDs que usamos para borrar en bloque
+  - -rm $(docker ps -aq) -> combinamos comandos, retornamos un listado de IDs que usamos para borrar en bloque. EJ: docker rm -f $(docker ps -aq)
   - -f borra el contenedor aunque este corriendo (forze)
 - exit -> salimos del contenedor.
 - exec -it 'nombre-container' 'comando -> ej exct -it contenedor bash, con esto entraríamos al bash del container.
@@ -50,6 +51,22 @@ Esto funciona como git, cada capa es una modificación sobre la anterior
 - --no-trunc -> no rompe la secuencia anterior. EJ: docker history --no-trunc ubuntu:alex
 
 
+### Network
+
+Es la manera de hacer que los contenedores se comuniquen. Existen 3 tipos de Redes:
+- Bridge: En desuso, usamos el link.
+- Host: Representa la red de la máquina y puede exponer peurtos que no quieremos
+- None: Contenedor si red
+
+
+Comandos
+- network ls -> Lista las redes disponibles
+- network create xxx-> Crea una red
+- --attachable -> permite que una red sea usada por otros contenedores. EJ: network create --attachable mired
+- connect 'red' 'contenedor' -> Conecta uan red a un contenedor. EJ: docker network connect platzinet db
+- inspect 'nombreRed' -> Muestra los detalles de la red.  EJ: docker network inspect platzinet
+
+
 ### DockerFile
 
 Es la receta que utiliza docker
@@ -69,7 +86,14 @@ Con brew install dive, podemos ver el conteido de cada layout de las imágenes. 
 
 - dive ubuntu:alex
 
+
+### Nodemon
+
+
+---
 Cuando ejecutamos un comando en la creación de un contenedor, le establece el PID 1, si ese PID se finalizase, el contenedor se pararía
+
+
 
 
 cat /etc/lsb-release  -> ver versión linux
